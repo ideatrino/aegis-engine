@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegis-av"
+version = "6.4.0"
+description = "Adaptive Ensemble with Guaranteed-envelope Integrity Scoring — an original, dependency-free antivirus reference grounded in the mathematics of what detection can and cannot do."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "ideatrino" }]
+keywords = ["antivirus", "malware", "bayesian", "ensemble", "security"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+dependencies = []   # stdlib only, on purpose
+
+[project.scripts]
+aegis = "aegis.cli:main"
+
+[project.gui-scripts]
+aegis-gui = "aegis.gui:launch"
+
+[project.urls]
+Homepage = "https://github.com/ideatrino/aegis-engine"
+
+[tool.setuptools]
+packages = ["aegis", "aegis.detectors"]
+
+[tool.setuptools.package-data]
+aegis = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
